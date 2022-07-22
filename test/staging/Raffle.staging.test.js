@@ -33,7 +33,7 @@ developmentChains.includes(network.name)
             await tx.wait(1);
             console.log("Ok, time to wait...");
             const winnerStartingBalance = await accounts[0].getBalance();
-            await raffle.enterRaffle({ value: raffleEntranceFee });
+
             //   and this code WONT complete until our listener has finished listerning
 
             raffle.once("WinnerPicked", async () => {
@@ -43,7 +43,7 @@ developmentChains.includes(network.name)
                 const raffleState = await raffle.getRaffleState();
                 const winnerEndingBalance = await accounts[0].getBalance();
                 const endingTimeStamp = await raffle.getLatestTimeStamp();
-
+                console.log(`recent winner is ${recentWinner}`);
                 await expect(raffle.getPlayer(0)).to.be.reverted;
                 assert.equal(raffleState.toString(), "0");
                 assert(endingTimeStamp > startingTimeStamp);

@@ -7,7 +7,8 @@ require("dotenv").config();
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://google.com";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x00";
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const ETHERSCAN_API_KEY =
+  process.env.ETHERSCAN_API_KEY || "EXAYCU57DAK83I54YEAGK7MNHMZM9EI5ZG";
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -27,9 +28,7 @@ module.exports = {
     },
   },
   etherscan: {
-    apikey: {
-      rinkeby: ETHERSCAN_API_KEY,
-    },
+    apikey: ETHERSCAN_API_KEY,
   },
   gasReporter: {
     enabled: false,
@@ -47,6 +46,6 @@ module.exports = {
     },
   },
   mocha: {
-    timeout: 200000, // 200 seconds
+    timeout: 300000, // 300 seconds
   },
 };
